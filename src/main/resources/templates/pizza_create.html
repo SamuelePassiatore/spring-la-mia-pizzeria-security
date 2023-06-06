@@ -8,7 +8,7 @@
 </head>
 <body class="p-4" th:object="${pizza}">
 	<h1>Crea una pizza</h1>
-	<form method="POST" th:action="@{/pizze/store}">
+	<form method="POST" th:action="@{/admin/pizze/store}">
 		<div class="pb-2">
 			<label>Nome</label>
 			<input type="text" name="nome" th:value="*{nome}">

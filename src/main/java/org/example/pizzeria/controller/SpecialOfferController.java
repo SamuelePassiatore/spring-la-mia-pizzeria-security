@@ -26,7 +26,7 @@ public class SpecialOfferController {
 	@Autowired
 	private PizzaService pizzaService;
 	
-	@GetMapping("/pizze/{pizzaId}/special-offer/create")
+	@GetMapping("/admin/pizze/{pizzaId}/special-offer/create")
 	public String createSpecialOffer(Model model, @PathVariable("pizzaId") int pizzaId) {
 		
 		model.addAttribute("specialOffer", new SpecialOffer());
@@ -34,7 +34,7 @@ public class SpecialOfferController {
 		return "offers_create";
 	}
 	
-	@PostMapping("/pizze/{pizzaId}/special-offer/store")
+	@PostMapping("/admin/pizze/{pizzaId}/special-offer/store")
 	public String storeSpecialOffer(
 			@PathVariable("pizzaId") int pizzaId,
 			Model model,
@@ -64,7 +64,7 @@ public class SpecialOfferController {
 	}
 	
 
-	@GetMapping("/pizze/{pizzaId}/special-offer/edit/{id}")
+	@GetMapping("/admin/pizze/{pizzaId}/special-offer/edit/{id}")
 	public String edit(@PathVariable("id") int id, @PathVariable("pizzaId") int pizzaId, Model model) {
 
 		Optional<SpecialOffer> specialOfferOpt = specialOfferServ.findById(id);
@@ -76,7 +76,7 @@ public class SpecialOfferController {
 		return "offers_update";
 	}
 
-	@PostMapping("/pizze/{pizzaId}/special-offer/update/{id}")
+	@PostMapping("/admin/pizze/{pizzaId}/special-offer/update/{id}")
 	public String update(@PathVariable("pizzaId") int pizzaId, @Valid @ModelAttribute SpecialOffer specialOffer, BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {

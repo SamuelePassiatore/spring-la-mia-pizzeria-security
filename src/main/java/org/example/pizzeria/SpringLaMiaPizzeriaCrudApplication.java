@@ -6,6 +6,10 @@ import java.util.Optional;
 
 import org.example.pizzeria.pojo.Pizza;
 import org.example.pizzeria.pojo.SpecialOffer;
+import org.example.pizzeria.auth.Role;
+import org.example.pizzeria.auth.User;
+import org.example.pizzeria.auth.RoleService;
+import org.example.pizzeria.auth.UserService;
 import org.example.pizzeria.pojo.Ingredient;
 import org.example.pizzeria.serv.IngredientServ;
 import org.example.pizzeria.serv.PizzaService;
@@ -14,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
@@ -26,6 +31,12 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 	
 	@Autowired
 	private IngredientServ ingredientServ;
+	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private RoleService roleService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringLaMiaPizzeriaCrudApplication.class, args);
@@ -74,6 +85,20 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 			System.out.println(pizzaOffer.getSpecialOffers());
 
 		}
+		
+		Role userRole = new Role("USER");
+		Role adminRole = new Role("ADMIN");
+		
+		roleService.save(userRole);
+		roleService.save(adminRole);
+		
+		final String psw = new BCryptPasswordEncoder().encode("password");
+		
+		User userUser = new User("user", psw, userRole);
+		User userAdmin = new User("admin", psw, adminRole);
+				
+		userService.save(userUser);
+		userService.save(userAdmin);
 	}
 
 	

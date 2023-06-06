@@ -8,7 +8,7 @@
 </head>
 <body class="p-4">
 	<h1>Modifica un'offerta speciale</h1>
-	<form method="POST"  th:action="@{/pizze/{pizzaId}/special-offer/update/{id} (pizzaId = ${pizzaId}, id = *{id})}" th:object="${specialOffer}">
+	<form method="POST"  th:action="@{/admin/pizze/{pizzaId}/special-offer/update/{id} (pizzaId = ${pizzaId}, id = *{id})}" th:object="${specialOffer}">
 		<div class="pb-2">
 			<label>Data inizio offerta</label>
 			<input type="date" name="startDate" th:value="*{startDate}">

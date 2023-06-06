@@ -19,7 +19,7 @@
 		<h5 th:text="${pizza.formattedPrezzo}"></h5>
 		<img style="height: 100px;" th:alt="*{nome}" th:src="*{foto}">
 	</div>
-	<a class="btn btn-small btn-success mt-5" th:href="@{/pizze/{pizzaId}/special-offer/create (pizzaId = *{id})}">Crea una nuova offerta speciale</a>
+	<a class="btn btn-small btn-success mt-5" th:href="@{/admin/pizze/{pizzaId}/special-offer/create (pizzaId = *{id})}" sec:authorize="hasAuthority('ADMIN')">Crea una nuova offerta speciale</a>
 	<div class="pt-5">
 		<h3>Offerte speciali: </h3>
 		<div th:each="specialOffer : ${pizza.specialOffers}" th:object="${specialOffer}" class="pb-4">
@@ -27,7 +27,7 @@
 			<div>Data inizio sconto: [[ *{startDate} ]]</div>
 			<div>Data fine sconto: [[ *{endDate} ]]</div>
 			<div>Prezzo scontato: [[*{discountedPrice}]]€</div>
-			<a class="btn btn-small btn-warning mt-2" th:href="@{/pizze/{pizzaId}/special-offer/edit/{id} (pizzaId = ${pizza.id}, id=*{id})}">Modifica</a>
+			<a class="btn btn-small btn-warning mt-2" th:href="@{/admin/pizze/{pizzaId}/special-offer/edit/{id} (pizzaId = ${pizza.id}, id=*{id})}" sec:authorize="hasAuthority('ADMIN')">Modifica</a>
 		</div>			
 	</div>
 </body>

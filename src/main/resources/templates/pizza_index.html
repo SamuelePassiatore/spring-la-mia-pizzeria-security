@@ -26,13 +26,13 @@
                 [[*{nome}]]
             </a>
             <div class="ps-5">
-	           	<a class="pe-3 btn btn-small btn-danger" th:href="@{/pizze/delete/{id} (id=*{id})}">
+	           	<a class="pe-3 btn btn-small btn-danger" th:href="@{/admin/pizze/delete/{id} (id=*{id})}" sec:authorize="hasAuthority('ADMIN')">
 					Elimina
 				</a>
-				<a class="btn btn-small btn-warning" th:href="@{/pizze/edit/{id} (id=*{id})}">
+				<a class="btn btn-small btn-warning" th:href="@{/admin/pizze/edit/{id} (id=*{id})}" sec:authorize="hasAuthority('ADMIN')">
 					Modifica
 				</a>
-				<a class="btn btn-small btn-secondary" th:href="@{/pizze/soft-delete/{id} (id=*{id})}">
+				<a class="btn btn-small btn-secondary" th:href="@{/admin/pizze/soft-delete/{id} (id=*{id})}" sec:authorize="hasAuthority('ADMIN')">
 					Soft delete
 				</a>
             </div>
@@ -41,6 +41,10 @@
             Non ci sono pizze disponibili al momento.
         </li>
     </ul>
-    <a class="btn btn-small btn-success mt-5" th:href="@{/pizze/create}">Crea una nuova pizza</a>
+    <div class="d-flex justify-content-center mt-5">
+    	<a class="btn btn-small btn-success me-2" th:href="@{/admin/pizze/create}" sec:authorize="hasAuthority('ADMIN')">Crea una nuova pizza</a>
+    	<a class="btn btn-small btn-warning d-flex align-items-center" th:href="@{/ingredients/user}" sec:authorize="hasAuthority('USER')">Vedi ingredienti</a>
+    </div>
+    
 </body>
 </html>

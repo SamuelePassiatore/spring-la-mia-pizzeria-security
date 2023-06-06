@@ -21,8 +21,9 @@ public class AuthConfiguration {
 	    
 		return 
 			http.authorizeHttpRequests(a -> a
-			        .requestMatchers("/users/**").hasAnyAuthority("USER", "ADMIN")
+			        .requestMatchers("/user/**").hasAnyAuthority("USER", "ADMIN")
 			        .requestMatchers("/admin/**").hasAuthority("ADMIN")
+			        .requestMatchers("*/admin/**").hasAuthority("ADMIN")
 			        .requestMatchers("/**").permitAll()
 			).formLogin(f -> f.permitAll()
 			).logout(l -> l.logoutSuccessUrl("/")

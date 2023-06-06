@@ -29,7 +29,7 @@ public class IngredientController {
 	@Autowired
 	private PizzaService pizzaServ;
 	
-	@GetMapping
+	@GetMapping("/user")
 	public String index(Model model) {
 
 		List<Ingredient> ingredients = ingredientServ.findAll();
@@ -38,14 +38,14 @@ public class IngredientController {
 		return "ingredient_index";
 	}
 	
-	@GetMapping("/create")
+	@GetMapping("/admin/create")
 	public String create(Model model) {
 		model.addAttribute("ingredient", new Ingredient());
 
 		return "ingredient_create";
 	}
 
-	@PostMapping("/store")
+	@PostMapping("/admin/store")
 	public String store(@Valid @ModelAttribute Ingredient ingredient, BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
@@ -61,7 +61,7 @@ public class IngredientController {
 		return "redirect:/ingredients";
 	}
 	
-	@GetMapping("/delete/{id}")
+	@GetMapping("/admin/delete/{id}")
 	public String delete(@PathVariable("id") int id) {
 
 		Optional<Ingredient> ingredientOpt = ingredientServ.findById(id);
