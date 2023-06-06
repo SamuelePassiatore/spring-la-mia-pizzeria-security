@@ -26,4 +26,9 @@ public class SpecialOfferServ {
 
 		return specialOfferRepo.save(specialOffer);
 	}
+	
+	public void delete(SpecialOffer specialOffer) {
+
+		specialOfferRepo.delete(specialOffer);
+	}
 }

@@ -12,6 +12,10 @@
 </head>
 <body class="p-2 text-center">
     <a class="nav-link active text-danger text-center pb-5" th:href="@{/}">Torna alla home!</a>
+    <div class="d-flex justify-content-center">
+		<a class="btn btn-small btn-primary me-2" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
+		<a class="btn btn-small btn-danger" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a>
+	</div>	
     <h1 class="pb-3">Le nostre pizze</h1>
     <form th:action="@{/pizze/nome}" method="POST" class="pb-5">
 		<input type="text" name="nome" th:value="${nome}">
