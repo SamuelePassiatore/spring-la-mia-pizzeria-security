@@ -29,7 +29,7 @@ public class IngredientController {
 	@Autowired
 	private PizzaService pizzaServ;
 	
-	@GetMapping("/user")
+	@GetMapping
 	public String index(Model model) {
 
 		List<Ingredient> ingredients = ingredientServ.findAll();

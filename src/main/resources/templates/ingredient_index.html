@@ -10,7 +10,7 @@
 </head>
 <body class="p-4">
 	<h1>Ingredienti:</h1>
-	<a class="btn btn-small btn-success my-4" href="/ingredients/admin/create" sec:authorize="hasAuthority('ADMIN')">Crea un ingrediente</a>
+	<a class="btn btn-small btn-success my-4" th:href="@{/ingredients/admin/create}" sec:authorize="hasAuthority('ADMIN')">Crea un ingrediente</a>
 	<ul>
 		<li class="pb-4"
 			th:each="ingredient : ${ingredients}"

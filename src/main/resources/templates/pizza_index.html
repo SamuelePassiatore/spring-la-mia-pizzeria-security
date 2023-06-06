@@ -43,7 +43,7 @@
     </ul>
     <div class="d-flex justify-content-center mt-5">
     	<a class="btn btn-small btn-success me-2" th:href="@{/admin/pizze/create}" sec:authorize="hasAuthority('ADMIN')">Crea una nuova pizza</a>
-    	<a class="btn btn-small btn-warning d-flex align-items-center" th:href="@{/ingredients/user}" sec:authorize="hasAuthority('USER')">Vedi ingredienti</a>
+    	<a class="btn btn-small btn-warning d-flex align-items-center" th:href="@{/ingredients}">Vedi ingredienti</a>
     </div>
     
 </body>
